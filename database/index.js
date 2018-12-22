@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const { Review } = require('./Review')
+const { Review } = require('./Review_schema.js')
 
 mongoose.connect('mongodb://localhost/fec', { useNewUrlParser: true });
 
@@ -9,7 +9,7 @@ var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
 const getReviewsForId = (id, cb) => {
-  Review.findOne({ _id: id }, (err, document) => {
+  Review.find({ w_id: id }, (err, document) => {
     if (err) { throw err; }
     cb(document);
   });
