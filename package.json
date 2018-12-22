@@ -8,6 +8,7 @@
     "node": ">=6.13.0"
   },
   "scripts": {
+    "seedDB": "node database/data_generation/generateReviewData.js & exit",
     "react-dev": "webpack --watch",
     "start": "nodemon server/index.js"
   },
@@ -30,6 +31,8 @@
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor",
     "eslint-plugin-import": "^2.14.0",
+    "faker": "^4.1.0",
+    "lorem-ipsum": "^1.0.6",
     "morgan": "^1.9.1",
     "nodemon": "^1.18.9",
     "webpack": "^4.28.0",
