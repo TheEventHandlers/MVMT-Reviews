@@ -83,7 +83,7 @@ class ReviewsContainer extends React.Component {
         
       })
       .catch(function (error) {
-        console.log(error);
+        throw(error);
       });
   }
 
