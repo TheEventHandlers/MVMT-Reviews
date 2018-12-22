@@ -60,6 +60,7 @@ class ReviewsContainer extends React.Component {
     	id: null,
     	reviews: dummyShowcaseReviews
     };
+
   }
 
   componentDidMount() {
@@ -86,7 +87,10 @@ class ReviewsContainer extends React.Component {
       });
   }
 
+
   render() {
+
+
     return (
        <div>
          <h1>Reviews</h1>
