@@ -10,17 +10,23 @@
   "scripts": {
     "seedDB": "node database/data_generation/generateReviewData.js & exit",
     "react-dev": "webpack --watch",
-    "start": "nodemon server/index.js"
+    "start": "nodemon server/index.js",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage --colors"
   },
   "dependencies": {
     "@babel/polyfill": "^7.2.5",
     "axios": "^0.18.0",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-jest": "^23.6.0",
     "body-parser": "^1.18.3",
     "express": "^4.16.4",
     "mongoose": "^5.4.0",
     "path": "^0.12.7",
     "react": "^16.7.0",
-    "react-dom": "^16.7.0"
+    "react-dom": "^16.7.0",
+    "regenerator-runtime": "^0.13.1"
   },
   "devDependencies": {
     "@babel/cli": "^7.2.3",
