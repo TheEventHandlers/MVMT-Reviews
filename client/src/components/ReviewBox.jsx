@@ -21,6 +21,7 @@ const ReviewBox = props => {
 
 const StyledReviewWrapper = styled.div`
   height: 400px;
+  width: 200px;
   padding: 20px;
   display: inline-flex;
   flex-direction: row;
