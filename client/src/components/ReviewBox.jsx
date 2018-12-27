@@ -7,7 +7,6 @@ const ReviewBox = props => {
          {props.review.reviewer}
        </div>
      </div>
-
   	)
 }
 
