@@ -2,7 +2,7 @@ import '@babel/polyfill';
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import ReviewBox from './ReviewBox.jsx';
+import StyledReviewBox from './ReviewBox.jsx';
 
 const dummyShowcaseReviews = [
   {
@@ -73,7 +73,7 @@ class App extends React.Component {
     	<h2> {this.state.reviews.length} CUSTOMER REVIEWS </h2>
     	<div className="all-reviews">
           {this.state.reviews.map(function(review, index) {
-               return <ReviewBox key={index} review={review}/>
+               return <StyledReviewBox key={index} review={review}/>
               })}
     	</div>
       </div>
