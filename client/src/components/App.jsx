@@ -1,8 +1,9 @@
 import '@babel/polyfill';
 import React from 'react';
 import ReactDOM from 'react-dom';
+import styled from 'styled-components';
 
-import StyledReviewBox from './ReviewBox.jsx';
+import ReviewBox from './ReviewBox.jsx';
 
 const dummyShowcaseReviews = [
   {
@@ -47,11 +48,17 @@ const dummyShowcaseReviews = [
 	stars: 5,
 	date_posted: new Date("<1987-10-23>"),
 	review_header: "Cool",  
-	review_body: "!!!!!",
+	review_body: "I was searching for a watch for my fiancé as a wedding gift. I had been looking at fossil but just didn’t like any of them. My brother recommended MVMT and I had such a hard deciding because I LOVED them all. Our wedding was yesterday and my fiancé loves this watch and all of his groomsmen loved it as well! Definitely plan to purchase more!",
 	upvotes: 0,
 	downvotes: 16
   }
 ];
+
+const StyledNumberBanner = styled.span`
+  width: 60px;
+  height: 30px;
+  
+`;
 
 class App extends React.Component {
   constructor(props) {
@@ -70,12 +77,15 @@ class App extends React.Component {
   render() {
     return (
       <div>
-    	<h2> {this.state.reviews.length} CUSTOMER REVIEWS </h2>
-    	<div className="all-reviews">
+    	  <h2> 
+          <StyledNumberBanner>{this.state.reviews.length} </StyledNumberBanner>
+          CUSTOMER REVIEWS 
+        </h2>
+    	  <div className="all-reviews">
           {this.state.reviews.map(function(review, index) {
-               return <StyledReviewBox key={index} review={review}/>
+               return <ReviewBox key={index} review={review}/>
               })}
-    	</div>
+    	  </div>
       </div>
 
     	)
