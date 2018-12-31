@@ -1,15 +1,26 @@
 import React from 'react';
 import styled from 'styled-components';
 import moment from 'moment';
+import StarRatings from 'react-star-ratings';
 
 const ReviewBox = props => {
   return (
   	<StyledReviewPadding>
+      <StyledStarsContainer>
+        <StarRatings
+          rating={props.review.stars}
+          starRatedColor="black"
+          numberOfStars={5}
+          name='rating'
+          starDimension="10px"
+          starSpacing="2px"
+        />
+        <StyledDate>{moment(props.review.date_posted).format('MM/DD/YYYY')}</StyledDate>
+      </StyledStarsContainer>
   	  <StyledUser>
   	    {props.review.reviewer}
   	    <StyledBanner> VERIFIED BUYER </StyledBanner>
       </StyledUser>
-  	  <StyledDate>{moment(props.review.date_posted).format('MM/DD/YYYY')}</StyledDate>
   	  <StyledTitle>{props.review.review_header}</StyledTitle>
   	  <StyledContentWrapper>
   	    <StyledReviewContent>{props.review.review_body}</StyledReviewContent>
@@ -29,15 +40,24 @@ const StyledReviewPadding = styled.div`
   border-style: solid;
   border-width: 2px;
   border-color: #D3D3D3;
+  background-color: lightblue;
+`;
+
+const StyledStarsContainer = styled.div`
+  width: 240px;
+  height: 30px;
+  background-color: blue;
+  flex-wrap: wrap;
 `;
 
 const StyledUser = styled.div`
   width: 250px;
   height: 20px;
   display: flex; 
-  position: relative;
   font-family: 'Questrial', sans-serif;
   font-size: 10px;
+  background-color: yellow;
+  flex-wrap: wrap;
 `;
 
 const StyledBanner = styled.span`
@@ -47,6 +67,7 @@ const StyledBanner = styled.span`
   position: relative;
   font-size: 8px;
   color: #D3D3D3;
+  background-color: red;
 `;
 
 const StyledDate = styled.div`
@@ -55,38 +76,42 @@ const StyledDate = styled.div`
   font-size: 8px;
   color: #D3D3D3;
   display: flex;   
-  position: relative;
+  background-color: green;
+  flex-wrap: wrap;
 
 `;
 
 const StyledTitle = styled.div`
   width: 240px;
   height: 40px;
-  position: relative;
   font-size: 15px;
   display: flex;   
   position: relative;
+  background-color: orange;
+  flex-wrap: wrap;
 `;
 
 const StyledContentWrapper = styled.div`
   display: flex; 
-  position:relative;
   width:240px;
   height:180px;
+  background-color: purple;
+  flex-wrap: wrap;
 `;
 
 const StyledReviewContent = styled.div`
   font-family: 'Questrial', sans-serif;
   font-size: 10px;
-  text-align: left;
+  text-align: center;
   overflow-wrap: normal;
   width: 230px;
   height: 210px;
   max-height: 150px;
   overflow-y: scroll;
   position: relative;
-  display: inline-flex;   
+  display: flex;   
   flex-wrap: wrap;
+  background-color: pink;
 `;
 
 const StyledShareBar = styled.div`
@@ -95,6 +120,16 @@ const StyledShareBar = styled.div`
   display: flex; 
   position: relative;
   font-size: 15px;
+  flex-wrap: wrap;
+`;
+
+const StyledReviewVotes = styled.div`
+  width: 230px;
+  height: 15px;
+  display: flex; 
+  position: relative;
+  font-size: 15px;
+  flex-wrap: wrap;
 `;
 
 export default ReviewBox;
