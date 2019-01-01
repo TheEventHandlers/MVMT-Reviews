@@ -12,7 +12,7 @@ const ReviewBox = props => {
           starRatedColor="black"
           numberOfStars={5}
           name='rating'
-          starDimension="10px"
+          starDimension="12px"
           starSpacing="2px"
         />
         <StyledDate>{moment(props.review.date_posted).format('MM/DD/YYYY')}</StyledDate>
@@ -35,7 +35,7 @@ const StyledReviewPadding = styled.div`
   width: 300px;
   height: 390px;
   margin: 20px 10px 20px 10px;
-  display: inline-flex;
+  display: inline-block;
   flex-direction: row;
   border-style: solid;
   border-width: 2px;
@@ -48,16 +48,21 @@ const StyledStarsContainer = styled.div`
   height: 30px;
   background-color: blue;
   flex-wrap: wrap;
+  flex-direction: column;
+  margin: auto;
 `;
 
 const StyledUser = styled.div`
-  width: 250px;
-  height: 20px;
+  width: 240px;
+  height: 30px;
   display: flex; 
   font-family: 'Questrial', sans-serif;
-  font-size: 10px;
+  font-size: 13px;
+  font-weight: bold;
   background-color: yellow;
   flex-wrap: wrap;
+  flex-direction: column;
+  margin: auto;
 `;
 
 const StyledBanner = styled.span`
@@ -68,6 +73,7 @@ const StyledBanner = styled.span`
   font-size: 8px;
   color: #D3D3D3;
   background-color: red;
+  margin: auto;
 `;
 
 const StyledDate = styled.div`
@@ -77,18 +83,24 @@ const StyledDate = styled.div`
   color: #D3D3D3;
   display: flex;   
   background-color: green;
-  flex-wrap: wrap;
+  position: relative;
+  text-align: right;
+  margin: auto;
 
 `;
 
 const StyledTitle = styled.div`
   width: 240px;
-  height: 40px;
-  font-size: 15px;
+  height: 30px;
+  font-family: 'Questrial', sans-serif;
+  font-size: 13px;
+  font-weight: bold;
   display: flex;   
   position: relative;
   background-color: orange;
   flex-wrap: wrap;
+  flex-direction: column;
+  margin: auto;
 `;
 
 const StyledContentWrapper = styled.div`
@@ -97,11 +109,13 @@ const StyledContentWrapper = styled.div`
   height:180px;
   background-color: purple;
   flex-wrap: wrap;
+  flex-direction: column;
+  margin: auto;
 `;
 
 const StyledReviewContent = styled.div`
   font-family: 'Questrial', sans-serif;
-  font-size: 10px;
+  font-size: 13px;
   text-align: center;
   overflow-wrap: normal;
   width: 230px;
@@ -112,6 +126,8 @@ const StyledReviewContent = styled.div`
   display: flex;   
   flex-wrap: wrap;
   background-color: pink;
+  overflow: hidden;
+  margin: auto;
 `;
 
 const StyledShareBar = styled.div`
