@@ -56,8 +56,15 @@ const dummyShowcaseReviews = [
   }
 ];
 
+const StyledComponentHeader = styled.h2`
+  display: flex;
+  justify-content: center;
+
+`;
+
+
 const StyledNumberBanner = styled.span`
-  width: 60px;
+  width: 300px;
   height: 30px;
   
 `;
@@ -79,6 +86,10 @@ class App extends React.Component {
 
     axios.get(`/api/watches/${wid}/reviews`)
       .then((reviews) => {
+
+        if (reviews.data.length < 4) {
+          return null;
+        }
         let newState = { reviews: reviews.data};
         this.setState((state) => {
           return newState;
@@ -98,10 +109,9 @@ class App extends React.Component {
 
     return (
       <div>
-    	  <h2> 
-          <StyledNumberBanner>{this.state.reviews.length} </StyledNumberBanner>
-          CUSTOMER REVIEWS 
-        </h2>
+    	  <StyledComponentHeader> 
+          <StyledNumberBanner>{this.state.reviews.length + " CUSTOMER REVIEWS"} </StyledNumberBanner>
+        </StyledComponentHeader>
     	  <div className="all-reviews">
           {this.state.reviews.map(function(review, index) {
                return <ReviewBox key={index} review={review}/>
