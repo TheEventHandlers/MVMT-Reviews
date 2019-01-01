@@ -70,6 +70,7 @@ const StyledBanner = styled.span`
   height: 10px;
   display: flex; 
   position: relative;
+  flex-direction: column;
   font-size: 8px;
   color: #D3D3D3;
   background-color: red;
@@ -84,6 +85,7 @@ const StyledDate = styled.div`
   display: flex;   
   background-color: green;
   position: relative;
+  flex-direction: column;
   text-align: right;
   margin: auto;
 

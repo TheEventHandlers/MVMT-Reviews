@@ -2,6 +2,8 @@ import '@babel/polyfill';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import styled from 'styled-components';
+import axios from 'axios';
+import parseUrl from 'parse-url';
 
 import ReviewBox from './ReviewBox.jsx';
 
@@ -65,16 +67,35 @@ class App extends React.Component {
     super(props);
     this.state = {
     	id: null,
-    	reviews: dummyShowcaseReviews
+    	reviews: null
     };
   }
 
   componentDidMount() {
+    const parsedUrl = parseUrl(window.location.href);
+    const pathname = parsedUrl.pathname;
+    const wid = pathname.substring(pathname.length - 3); 
+    if (wid < 100 || wid > 199) { return; }
+
+    axios.get(`/api/watches/${wid}/reviews`)
+      .then((reviews) => {
+        let newState = { reviews: reviews.data};
+        this.setState((state) => {
+          return newState;
+        });
+      })
+      .catch((error) => {
+        console.log('Error', error);
+      })
   	
   }
 
 
   render() {
+    if (this.state.reviews === null) {
+      return null;
+    }
+
     return (
       <div>
     	  <h2> 
