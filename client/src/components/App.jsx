@@ -1,6 +1,6 @@
 import '@babel/polyfill';
 import React from 'react';
-import ReactDOM from 'react-dom';
+
 import styled from 'styled-components';
 import axios from 'axios';
 import parseUrl from 'parse-url';
@@ -51,7 +51,7 @@ const dummyShowcaseReviews = [
   	stars: 5,
   	date_posted: new Date("<1987-10-23>"),
   	review_header: "Cool",  
-  	review_body: "I was searching for a watch for my fiancé as a wedding gift. I had been looking at fossil but just didn’t like any of them. My brother recommended MVMT and I had such a hard deciding because I LOVED them all. Our wedding was yesterday and my fiancé loves this watch and all of his groomsmen loved it as well! Definitely plan to purchase more!",
+  	review_body: "I was searching for a watch for my girlfriend as an engagement gift. I had been looking at fossil but just didn’t like any of them. My brother recommended MVMT and I had such a hard deciding because I LOVED them all. Our wedding was yesterday and my fiancé loves this watch and all of his groomsmen loved it as well! Definitely plan to purchase more!",
   	upvotes: 0,
   	downvotes: 16
   },
@@ -59,22 +59,22 @@ const dummyShowcaseReviews = [
   {
     _id: 1005,
     w_id: 100,
-    reviewer: "George Qian", 
+    reviewer: "George Q", 
     stars: 5,
-    date_posted: new Date("<1987-10-20>"),
+    date_posted: new Date("<1986-10-24>"),
     review_header: "Greatest watch ever",  
-    review_body: "I love this watch, it's the most amazing thing. 10/10, will buy a dozen more just like it.",
+    review_body: "10/10, will buy a dozen more just like it.",
     upvotes: 6,
     downvotes: 0
   },
   {
     _id: 1006,
     w_id: 100,
-    reviewer: "Cherri Hartigan", 
+    reviewer: "Cherri H", 
     stars: 4,
-    date_posted: new Date("<1987-10-21>"),
+    date_posted: new Date("<1986-10-25>"),
     review_header: "Not bad",  
-    review_body: "It gets the job done.",
+    review_body: "It doesn't get the job done.",
     upvotes: 9,
     downvotes: 1
   },
@@ -82,9 +82,9 @@ const dummyShowcaseReviews = [
   {
     _id: 1007,
     w_id: 100,
-    reviewer: "Aaron Deane", 
+    reviewer: "Aaron D", 
     stars: 5,
-    date_posted: new Date("<1987-10-22>"),
+    date_posted: new Date("<1986-10-26>"),
     review_header: "The best purchase I ever made.",  
     review_body: "It's great",
     upvotes: 4,
@@ -94,9 +94,9 @@ const dummyShowcaseReviews = [
   {
     _id: 1008,
     w_id: 100,
-    reviewer: "Linden Chiu", 
+    reviewer: "Linden C", 
     stars: 5,
-    date_posted: new Date("<1987-10-23>"),
+    date_posted: new Date("<1986-10-27>"),
     review_header: "Cool",  
     review_body: "I was searching for a watch for my fiancé as a wedding gift. I had been looking at fossil but just didn’t like any of them. My brother recommended MVMT and I had such a hard deciding because I LOVED them all. Our wedding was yesterday and my fiancé loves this watch and all of his groomsmen loved it as well! Definitely plan to purchase more!",
     upvotes: 0,
@@ -104,22 +104,21 @@ const dummyShowcaseReviews = [
   }
 ];
 
-const MenuItem = (index, review) => {
+const MenuItem = ({review, key}) => {
   return (
-    <div
-      className="menu-item"
+    <div 
+      className="menu-item" 
     >
-      <ReviewBox key={index} review={review}/>
+      <ReviewBox key={key} review={review}/>
     </div>
   );
 };
  
-export const Menu = (list) => list.map((idx, el) => {
+export const Menu = (list) => list.map((el) => {
   const { _id } = el;
  
   return (
-    <MenuItem
-      index={idx}
+    <MenuItem 
       review={el}
       key={_id}
     />
@@ -155,7 +154,7 @@ class App extends React.Component {
     super(props);
     this.state = {
     	id: null,
-    	reviews: dummyShowcaseReviews,
+    	reviews: null,
       selected: 0
     };
 
@@ -167,38 +166,41 @@ class App extends React.Component {
     this.setState({ selected: key });
   }
 
-  // componentDidMount() {
-  //   const parsedUrl = parseUrl(window.location.href);
-  //   const pathname = parsedUrl.pathname;
-  //   const wid = pathname.substring(pathname.length - 3); 
-  //   if (wid < 100 || wid > 199) { return; }
+  componentDidMount() {
+    const parsedUrl = parseUrl(window.location.href);
+    const pathname = parsedUrl.pathname;
+    const wid = pathname.substring(pathname.length - 3); 
+    if (wid < 100 || wid > 199) { return; }
 
-  //   axios.get(`/api/watches/${wid}/reviews`)
-  //     .then((reviews) => {
+    axios.get(`/api/watches/${wid}/reviews`)
+      .then((reviews) => {
 
-  //       if (reviews.data.length < 8) {
-  //         return null;
-  //       }
-  //       let newState = { reviews: reviews.data};
-  //       this.setState((state) => {
-  //         return newState;
-  //       });
-  //     })
-  //     .catch((error) => {
-  //       console.log('Error', error);
-  //     })
+        if (reviews.data.length < 8) {
+          return null;
+        }
+        let newState = { reviews: reviews.data};
+        this.setState((state) => {
+          console.log('state', state)
+          return newState;
+        });
+      })
+      .catch((error) => {
+        console.log('Error', error);
+      })
   	
-  // }
+  }
 
 
   render() {
-    const { selected } = this.state;
-
-    const menu = Menu(dummyShowcaseReviews, selected);
-
     if (this.state.reviews === null) {
       return null;
     }
+
+    const { selected } = this.state;
+
+    const menu = Menu(this.state.reviews, selected);
+
+    
 
     return (
       <div>
@@ -211,6 +213,7 @@ class App extends React.Component {
           arrowRight={ArrowRight}
           selected={selected}
           onSelect={this.onSelect}
+          hideArrows={true}
         />
       </div>
 

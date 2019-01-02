@@ -9,8 +9,7 @@
   },
   "scripts": {
     "seedDB": "node database/data_generation/generateReviewData.js & exit",
-    "react-dev": "webpack --watch",
-    "start": "nodemon server/index.js",
+    "start": "webpack -d --watch | nodemon server/index.js",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage --colors"
@@ -42,6 +41,7 @@
     "@babel/plugin-syntax-dynamic-import": "^7.2.0",
     "@babel/preset-env": "^7.2.3",
     "@babel/preset-react": "^7.0.0",
+    "babel-eslint": "^10.0.1",
     "babel-loader": "^8.0.4",
     "babel-plugin-styled-components": "^1.10.0",
     "enzyme": "^3.8.0",

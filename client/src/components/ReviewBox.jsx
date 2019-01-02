@@ -6,6 +6,7 @@ import StarRatings from 'react-star-ratings';
 const ReviewBox = props => {
   return (
   	<StyledReviewPadding>
+
       <StyledStarsContainer>
         <StarRatings
           rating={props.review.stars}
@@ -24,6 +25,7 @@ const ReviewBox = props => {
   	  <StyledTitle>{props.review.review_header}</StyledTitle>
   	  <StyledContentWrapper>
   	    <StyledReviewContent>{props.review.review_body}</StyledReviewContent>
+        {props.key}
   	  </StyledContentWrapper>
       <div className="review-votes"></div>
 
@@ -40,13 +42,13 @@ const StyledReviewPadding = styled.div`
   border-style: solid;
   border-width: 2px;
   border-color: #D3D3D3;
-  background-color: lightblue;
+  letter-spacing: 1.1px;
+  font-family: 'Questrial', sans-serif;
 `;
 
 const StyledStarsContainer = styled.div`
   width: 240px;
   height: 30px;
-  background-color: blue;
   flex-wrap: wrap;
   flex-direction: column;
   margin: auto;
@@ -56,10 +58,7 @@ const StyledUser = styled.div`
   width: 240px;
   height: 30px;
   display: flex; 
-  font-family: 'Questrial', sans-serif;
-  font-size: 13px;
-  font-weight: bold;
-  background-color: yellow;
+  font-variant: small-caps;
   flex-wrap: wrap;
   flex-direction: column;
   margin: auto;
@@ -73,7 +72,6 @@ const StyledBanner = styled.span`
   flex-direction: column;
   font-size: 8px;
   color: #D3D3D3;
-  background-color: red;
   margin: auto;
 `;
 
@@ -83,7 +81,6 @@ const StyledDate = styled.div`
   font-size: 8px;
   color: #D3D3D3;
   display: flex;   
-  background-color: green;
   position: relative;
   flex-direction: column;
   text-align: right;
@@ -94,12 +91,11 @@ const StyledDate = styled.div`
 const StyledTitle = styled.div`
   width: 240px;
   height: 30px;
-  font-family: 'Questrial', sans-serif;
-  font-size: 13px;
+  font-variant: small-caps;
   font-weight: bold;
+  font-size: 10px;
   display: flex;   
   position: relative;
-  background-color: orange;
   flex-wrap: wrap;
   flex-direction: column;
   margin: auto;
@@ -107,28 +103,23 @@ const StyledTitle = styled.div`
 
 const StyledContentWrapper = styled.div`
   display: flex; 
-  width:240px;
-  height:180px;
-  background-color: purple;
-  flex-wrap: wrap;
-  flex-direction: column;
+  width: 240px;
+  height: 180px;
+  display: inline-block;
   margin: auto;
 `;
 
 const StyledReviewContent = styled.div`
-  font-family: 'Questrial', sans-serif;
-  font-size: 13px;
+  font-weight: bold;
   text-align: center;
-  overflow-wrap: normal;
+  overflow-y: auto;
+  word-wrap: break-word;
+  word-break: normal;
+  line-break: strict;
+  white-space: normal;
   width: 230px;
-  height: 210px;
-  max-height: 150px;
-  overflow-y: scroll;
+  height: 150px;
   position: relative;
-  display: flex;   
-  flex-wrap: wrap;
-  background-color: pink;
-  overflow: hidden;
   margin: auto;
 `;
 

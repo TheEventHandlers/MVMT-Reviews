@@ -17,7 +17,10 @@
 
 ## Usage
 
-> Some usage instructions
+To start the app:
+  npm install
+  npm run seedDB
+  npm run start
 
 ## Requirements
 
