@@ -51,7 +51,10 @@ const StyledStarsContainer = styled.div`
   display: inline;
   float: left;
   vertical-align: middle;
-  margin: 35px;
+  margin-top: 30px;
+  margin-bottom: 10px;
+  margin-right: 50px;
+  margin-left: 20px;
 `;
 
 const StyledUser = styled.div`
@@ -61,7 +64,10 @@ const StyledUser = styled.div`
   display: inline;
   float: left;
   vertical-align: middle;
-  margin: 35px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  margin-right: 15px;
+  margin-left: 20px;
 `;
 
 const StyledBanner = styled.span`
@@ -94,7 +100,7 @@ const StyledTitle = styled.div`
   height: 30px;
   font-variant: small-caps;
   font-weight: bold;
-  font-size: 10px;
+  font-size: 13px;
   display: flex;   
   position: relative;
   flex-wrap: wrap;
@@ -111,7 +117,7 @@ const StyledContentWrapper = styled.div`
 `;
 
 const StyledReviewContent = styled.div`
-  text-align: center;
+  text-align: left;
   overflow-y: auto;
   word-wrap: break-word;
   word-break: normal;
@@ -120,7 +126,7 @@ const StyledReviewContent = styled.div`
   width: 230px;
   height: 150px;
   position: relative;
-  margin: auto;
+  margin: 35px;
   font-family: 'Questrial', sans-serif;
   letter-spacing: 1.1px;
 `;
