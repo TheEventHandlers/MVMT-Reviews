@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import moment from 'moment';
 import StarRatings from 'react-star-ratings';
-import { FaThumbsUp, FaThumbsDown } from 'react-icons/fa';
+import { FaThumbsUp, FaThumbsDown, FaFacebook, FaLinkedin, FaTwitter, FaShareSquare } from 'react-icons/fa';
 
 const ReviewBox = props => {
 
@@ -33,12 +33,14 @@ const ReviewBox = props => {
   	    <StyledReviewContent>{props.review.review_body}</StyledReviewContent>
         {props.key}
   	  </StyledContentWrapper>
-      <StyledShareBar></StyledShareBar>
+      <StyledShareBar>
+        <StyledShareToggle><FaShareSquare /> {' ' + 'share'}</StyledShareToggle> 
+        <StyledShareFlex>{'\u00A0'}{' | '}{'\u00A0'}<FaFacebook />{'\u00A0'}<FaLinkedin />{'\u00A0'}<FaTwitter /></StyledShareFlex>
+      </StyledShareBar>
       <StyledReviewVotes>
         was this review helpful?
-
-        <StyledUpvote> <FaThumbsUp />{props.review.upvotes}</StyledUpvote>
-        <StyledDownvote> <FaThumbsDown /> {'  ' + props.review.downvotes} </StyledDownvote>
+        <StyledUpvote> <FaThumbsUp />{'\u00A0'}{props.review.upvotes}</StyledUpvote>
+        <StyledDownvote> <FaThumbsDown />{'\u00A0'}{props.review.downvotes} </StyledDownvote>
       </StyledReviewVotes>
 
   	</StyledReviewPadding>
@@ -54,7 +56,7 @@ const StyledReviewPadding = styled.div`
   border-style: solid;
   border-width: 2px;
   border-color: #D3D3D3;
-  font-family: 'futura-pt',arial,sans-serif;
+  font-family: 'futura-pt', arial, sans-serif;
   letter-spacing: 1.5px
 `;
 
@@ -154,12 +156,39 @@ const StyledReviewContent = styled.div`
 `;
 
 const StyledShareBar = styled.div`
-  width: 240px;
-  height: 40px;
+  width: 138px;
+  height: 16px;
   display: flex; 
   position: relative;
-  font-size: 13px;
+  font-family: 'futura-pt', arial, sans-serif;
+  font-size: 11px;
+  font-variant: small-caps;
+  font-weight: 500
+  font-style: normal;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  -webkit-font-smoothing: antialiased;
   flex-wrap: wrap;
+  margin-top: 0px;
+  margin-bottom: 10px;
+  margin-right: 15px;
+  margin-left: 20px;
+`;
+
+const StyledShareToggle = styled.div`
+  width: 50px;
+  height: 14px;
+  display: flex; 
+  position: relative;
+  font-size: 11px;
+`;
+
+const StyledShareFlex = styled.div`
+  width: 80px;
+  height: 14px;
+  display: flex; 
+  position: relative;
+  font-size: 11px;
 `;
 
 const StyledReviewVotes = styled.div`
@@ -167,9 +196,14 @@ const StyledReviewVotes = styled.div`
   height: 15px;
   display: flex; 
   position: relative;
-  font-size: 13px;
+  font-family: 'futura-pt', arial, sans-serif;
+  font-size: 11px;
   font-variant: small-caps;
-  font-weight: bold;
+  font-weight: 500
+  font-style: normal;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  -webkit-font-smoothing: antialiased;
   margin-top: 0px;
   margin-bottom: 0px;
   margin-right: 15px;
@@ -177,11 +211,11 @@ const StyledReviewVotes = styled.div`
 `;
 
 const StyledUpvote = styled.span`
-  width: 25px;
+  width: 35px;
   height: 14px;
   display: flex; 
   position: relative;
-  font-size: 13px;
+  font-size: 11px;
   margin-top: 0px;
   margin-bottom: 0px;
   margin-right: 5px;
@@ -189,11 +223,11 @@ const StyledUpvote = styled.span`
 `;
 
 const StyledDownvote = styled.span`
-  width: 25px;
+  width: 35px;
   height: 14px;
   display: flex; 
   position: relative;
-  font-size: 13px;
+  font-size: 11px;
   margin-top: 0px;
   margin-bottom: 0px;
   margin-right: 5px;

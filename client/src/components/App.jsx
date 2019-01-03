@@ -46,15 +46,18 @@ const StyledComponentHeader = styled.h2`
   display: flex;
   justify-content: center;
   font-variant: small-caps;
-  font-size: 1.375rem;
+  font-size: 18px;
+  letter-spacing: 2.5px;
   font-family: 'futura-pt', arial, sans-serif;
   font-weight: 400;
+  text-transform: uppercase;
 
 `;
 
 const StyledNumberBanner = styled.span`
   font-variant: small-caps;
-  font-size: 1.375rem;
+  font-size: 18px;
+  letter-spacing: 2.5px;
   font-family: 'futura-pt', arial, sans-serif;
   font-weight: 400;
 `;
