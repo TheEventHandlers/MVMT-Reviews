@@ -45,15 +45,15 @@ const ArrowRight = Arrow({ text: '>', className: 'arrow-next' });
 const StyledComponentHeader = styled.h2`
   display: flex;
   justify-content: center;
+  font-variant: small-caps;
+  font-size: 1.375rem;
+  font-family: 'futura-pt', arial, sans-serif;
+  font-weight: 400;
 
 `;
 
 const StyledNumberBanner = styled.span`
-  width: 300px;
-  height: 30px;
-  font-variant: small-caps;
-  font-family: 'Questrial', sans-serif;
-  
+
 `;
 
 class App extends React.Component {
@@ -112,7 +112,7 @@ class App extends React.Component {
     return (
       <div>
     	  <StyledComponentHeader> 
-          <StyledNumberBanner>{this.state.reviews.length + " Customer Reviews"} </StyledNumberBanner>
+          <StyledNumberBanner>{this.state.reviews.length + " customer reviews"} </StyledNumberBanner>
         </StyledComponentHeader>
     	  <ScrollMenu
           data={menu}
