@@ -53,7 +53,10 @@ const StyledComponentHeader = styled.h2`
 `;
 
 const StyledNumberBanner = styled.span`
-
+  font-variant: small-caps;
+  font-size: 1.375rem;
+  font-family: 'futura-pt', arial, sans-serif;
+  font-weight: 400;
 `;
 
 class App extends React.Component {
@@ -87,7 +90,6 @@ class App extends React.Component {
         }
         let newState = { reviews: reviews.data};
         this.setState((state) => {
-          console.log('state', state)
           return newState;
         });
       })

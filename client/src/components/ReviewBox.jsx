@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import moment from 'moment';
 import StarRatings from 'react-star-ratings';
+import { FaThumbsUp, FaThumbsDown } from 'react-icons/fa';
 
 const ReviewBox = props => {
 
@@ -32,7 +33,13 @@ const ReviewBox = props => {
   	    <StyledReviewContent>{props.review.review_body}</StyledReviewContent>
         {props.key}
   	  </StyledContentWrapper>
-      <div className="review-votes"></div>
+      <StyledShareBar></StyledShareBar>
+      <StyledReviewVotes>
+        was this review helpful?
+
+        <StyledUpvote> <FaThumbsUp />{props.review.upvotes}</StyledUpvote>
+        <StyledDownvote> <FaThumbsDown /> {'  ' + props.review.downvotes} </StyledDownvote>
+      </StyledReviewVotes>
 
   	</StyledReviewPadding>
   	)
@@ -117,7 +124,7 @@ const StyledTitle = styled.div`
   flex-wrap: wrap;
   flex-direction: column;
   margin-top: 0px;
-  margin-bottom: 10px;
+  margin-bottom: 0px;
   margin-right: 15px;
   margin-left: 20px;
 `;
@@ -144,8 +151,6 @@ const StyledReviewContent = styled.div`
   height: 150px;
   position: relative;
   margin: 20px;
-  font-family: 'Questrial', sans-serif;
-  letter-spacing: 1.1px;
 `;
 
 const StyledShareBar = styled.div`
@@ -153,7 +158,7 @@ const StyledShareBar = styled.div`
   height: 40px;
   display: flex; 
   position: relative;
-  font-size: 15px;
+  font-size: 13px;
   flex-wrap: wrap;
 `;
 
@@ -162,8 +167,37 @@ const StyledReviewVotes = styled.div`
   height: 15px;
   display: flex; 
   position: relative;
-  font-size: 15px;
-  flex-wrap: wrap;
+  font-size: 13px;
+  font-variant: small-caps;
+  font-weight: bold;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  margin-right: 15px;
+  margin-left: 20px;
+`;
+
+const StyledUpvote = styled.span`
+  width: 25px;
+  height: 14px;
+  display: flex; 
+  position: relative;
+  font-size: 13px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  margin-right: 5px;
+  margin-left: 10px;
+`;
+
+const StyledDownvote = styled.span`
+  width: 25px;
+  height: 14px;
+  display: flex; 
+  position: relative;
+  font-size: 13px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  margin-right: 5px;
+  margin-left: 10px;
 `;
 
 export default ReviewBox;
