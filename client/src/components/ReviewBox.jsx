@@ -15,6 +15,7 @@ const ReviewBox = props => {
           name='rating'
           starDimension="12px"
           starSpacing="2px"
+          starEmptyColor="white"
         />
         <StyledDate>{moment(props.review.date_posted).format('MM/DD/YYYY')}</StyledDate>
       </StyledStarsContainer>
@@ -42,37 +43,36 @@ const StyledReviewPadding = styled.div`
   border-style: solid;
   border-width: 2px;
   border-color: #D3D3D3;
-  letter-spacing: 1.1px;
-  font-family: 'Questrial', sans-serif;
 `;
 
 const StyledStarsContainer = styled.div`
   width: 240px;
   height: 30px;
-  flex-wrap: wrap;
-  flex-direction: column;
-  margin: auto;
+  display: inline;
+  float: left;
+  vertical-align: middle;
+  margin: 35px;
 `;
 
 const StyledUser = styled.div`
   width: 240px;
   height: 30px;
-  display: flex; 
   font-variant: small-caps;
-  flex-wrap: wrap;
-  flex-direction: column;
-  margin: auto;
+  display: inline;
+  float: left;
+  vertical-align: middle;
+  margin: 35px;
 `;
 
 const StyledBanner = styled.span`
   width: 90px;
   height: 10px;
-  display: flex; 
-  position: relative;
-  flex-direction: column;
+  display: inline;
+  float: right;
+  vertical-align: middle;
   font-size: 8px;
   color: #D3D3D3;
-  margin: auto;
+  margin: 5px;
 `;
 
 const StyledDate = styled.div`
@@ -82,8 +82,9 @@ const StyledDate = styled.div`
   color: #D3D3D3;
   display: flex;   
   position: relative;
-  flex-direction: column;
-  text-align: right;
+  display: inline;
+  float: right;
+  vertical-align: middle;
   margin: auto;
 
 `;
@@ -110,7 +111,6 @@ const StyledContentWrapper = styled.div`
 `;
 
 const StyledReviewContent = styled.div`
-  font-weight: bold;
   text-align: center;
   overflow-y: auto;
   word-wrap: break-word;
@@ -121,6 +121,8 @@ const StyledReviewContent = styled.div`
   height: 150px;
   position: relative;
   margin: auto;
+  font-family: 'Questrial', sans-serif;
+  letter-spacing: 1.1px;
 `;
 
 const StyledShareBar = styled.div`
