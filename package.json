@@ -28,6 +28,7 @@
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
     "react-horizontal-scrolling-menu": "^0.4.3",
+    "react-icons": "^3.2.2",
     "react-star-ratings": "^2.3.0",
     "regenerator-runtime": "^0.13.1",
     "styled-components": "^4.1.3"
