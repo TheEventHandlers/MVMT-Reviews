@@ -9,28 +9,29 @@ import ScrollMenu from 'react-horizontal-scrolling-menu';
 import ReviewBox from './ReviewBox.jsx';
 
 
-const MenuItem = ({review, key}) => {
+const MenuItem = ( {review, key, toggle, hidden} ) => {
   return (
-    <div 
-      className="menu-item" 
+    <div
+      className="menu-item"
     >
-      <ReviewBox key={key} review={review}/>
+      <ReviewBox toggleClick={toggle} isToggled={hidden} key={key} review={review}/>
     </div>
   );
 };
- 
-export const Menu = (list) => list.map((el) => {
+
+export const Menu = (list, position, handler, hidden) => list.map((el) => {
   const { _id } = el;
- 
+
   return (
     <MenuItem 
       review={el}
       key={_id}
+      toggle={handler}
+      hidden={hidden}
     />
   );
 });
- 
- 
+
 const Arrow = ({ text, className }) => {
   return (
     <div
@@ -38,7 +39,7 @@ const Arrow = ({ text, className }) => {
     >{text}</div>
   );
 };
- 
+
 const ArrowLeft = Arrow({ text: '<', className: 'arrow-prev' });
 const ArrowRight = Arrow({ text: '>', className: 'arrow-next' });
 
@@ -68,21 +69,22 @@ class App extends React.Component {
     this.state = {
     	id: null,
     	reviews: null,
-      selected: 0
+      selected: 0,
+      isToggled: false
     };
 
     this.onSelect = this.onSelect.bind(this);
+    this.toggleHidden = this.toggleHidden.bind(this);
 
   }
-
-  onSelect() {
+  onSelect(key) {
     this.setState({ selected: key });
   }
 
   componentDidMount() {
     const parsedUrl = parseUrl(window.location.href);
     const pathname = parsedUrl.pathname;
-    const wid = pathname.substring(pathname.length - 3); 
+    const wid = pathname.substring(pathname.length - 3);
     if (wid < 100 || wid > 199) { return; }
 
     axios.get(`/api/watches/${wid}/reviews`)
@@ -91,15 +93,18 @@ class App extends React.Component {
         if (reviews.data.length < 8) {
           return null;
         }
-        let newState = { reviews: reviews.data};
+        let newState = { reviews: reviews.data };
         this.setState((state) => {
           return newState;
         });
       })
       .catch((error) => {
-        console.log('Error', error);
-      })
-  	
+      });  	
+    }
+    toggleHidden() {
+      this.setState({
+        isToggled: !this.state.isToggled,
+      });
   }
 
 
@@ -110,13 +115,11 @@ class App extends React.Component {
 
     const { selected } = this.state;
 
-    const menu = Menu(this.state.reviews, selected);
-
-    
+    const menu = Menu(this.state.reviews, selected, this.toggleHidden, this.state.isToggled);
 
     return (
       <div>
-    	  <StyledComponentHeader> 
+    	  <StyledComponentHeader>
           <StyledNumberBanner>{this.state.reviews.length + " customer reviews"} </StyledNumberBanner>
         </StyledComponentHeader>
     	  <ScrollMenu
@@ -130,7 +133,7 @@ class App extends React.Component {
       </div>
 
     	)
-  }
+  };
 }
 
 export default App;

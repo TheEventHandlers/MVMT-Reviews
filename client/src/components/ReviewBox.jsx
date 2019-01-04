@@ -4,14 +4,17 @@ import moment from 'moment';
 import StarRatings from 'react-star-ratings';
 import { FaThumbsUp, FaThumbsDown, FaFacebook, FaLinkedin, FaTwitter, FaShareSquare } from 'react-icons/fa';
 
-const ReviewBox = props => {
-
+const ReviewBox = (props) => {
   let formattedUserName = props.review.reviewer.split(' ');
   formattedUserName = formattedUserName[0] + ' ' + formattedUserName[1][0] + '.';
-  
+
+  let flexToggle = null;
+  if (props.isToggled) {
+    flexToggle = <StyledShareFlex>{'\u00A0'}{' | '}{'\u00A0'}<FaFacebook />{'\u00A0'}<FaLinkedin />{'\u00A0'}<FaTwitter /></StyledShareFlex>
+  }
+
   return (
   	<StyledReviewPadding>
-
       <StyledStarsContainer>
         <StarRatings
           rating={props.review.stars}
@@ -33,9 +36,9 @@ const ReviewBox = props => {
   	    <StyledReviewContent>{props.review.review_body}</StyledReviewContent>
         {props.key}
   	  </StyledContentWrapper>
-      <StyledShareBar>
+      <StyledShareBar onClick={props.toggleClick} >
         <StyledShareToggle><FaShareSquare /> {' ' + 'share'}</StyledShareToggle> 
-        <StyledShareFlex>{'\u00A0'}{' | '}{'\u00A0'}<FaFacebook />{'\u00A0'}<FaLinkedin />{'\u00A0'}<FaTwitter /></StyledShareFlex>
+        { flexToggle }
       </StyledShareBar>
       <StyledReviewVotes>
         was this review helpful?
@@ -45,7 +48,7 @@ const ReviewBox = props => {
 
   	</StyledReviewPadding>
   	)
-}
+};
 
 const StyledReviewPadding = styled.div`
   width: 300px;
