@@ -114,11 +114,13 @@ const generateAndStoreReviews = () => {
   });
   }
 
+  let newId = 1009;
+
   for (let i = 101; i <= 199; i += 1) {
     let range = randomIntFromInterval(4, 100);
     for (let j = 4; j <= range; j += 1) {
       const record = {};
-      record._id = faker.random.number(15000);
+      record._id = newId;
       record.w_id = i;
       record.reviewer = faker.name.findName();
       record.stars = faker.random.number({
@@ -130,6 +132,7 @@ const generateAndStoreReviews = () => {
       record.review_body = faker.lorem.paragraphs();
       record.upvotes = faker.random.number(100);
       record.downvotes = faker.random.number(100);
+      newId++;
 
       Review.create(record, (err) => {
         if (err) { throw err; }
