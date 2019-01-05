@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const { Review } = require('./Review_schema.js')
 
-mongoose.connect('mongodb://localhost/fec', { useNewUrlParser: true });
+mongoose.connect('mongodb://172.17.0.2/fec', { useNewUrlParser: true });
 
 var db = mongoose.connection;
 

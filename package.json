@@ -8,14 +8,11 @@
     "node": ">=6.13.0"
   },
   "scripts": {
-<<<<<<< Updated upstream
     "seedDB": "node database/data_generation/generateReviewData.js & exit",
     "start": "webpack -d --watch | nodemon server/index.js",
-=======
     "seedDB": "node database/data_generation/generateReviewData.js",
     "server-dev": "node server/index.js",
     "start": "node database/data_generation/generateReviewData.js && node server/index.js",
->>>>>>> Stashed changes
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage --colors"
