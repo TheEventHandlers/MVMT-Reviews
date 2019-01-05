@@ -46,7 +46,6 @@ const ArrowRight = Arrow({ text: '>', className: 'arrow-next' });
 const StyledComponentHeader = styled.h2`
   display: flex;
   justify-content: center;
-<<<<<<< Updated upstream
   font-variant: small-caps;
   font-size: 18px;
   letter-spacing: 2.5px;
@@ -54,20 +53,15 @@ const StyledComponentHeader = styled.h2`
   font-weight: 400;
   text-transform: uppercase;
 
-=======
->>>>>>> Stashed changes
 `;
 
 const StyledNumberBanner = styled.span`
   font-variant: small-caps;
-<<<<<<< Updated upstream
   font-size: 18px;
   letter-spacing: 2.5px;
   font-family: 'futura-pt', arial, sans-serif;
   font-weight: 400;
-=======
   font-family: 'Questrial', sans-serif; 
->>>>>>> Stashed changes
 `;
 
 class App extends React.Component {
