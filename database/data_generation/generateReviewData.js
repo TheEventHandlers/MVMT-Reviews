@@ -136,6 +136,9 @@ const generateAndStoreReviews = () => {
 
       Review.create(record, (err) => {
         if (err) { throw err; }
+        if (i === 199) {
+          process.exit();
+        }
       });
     }
   }
