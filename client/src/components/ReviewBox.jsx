@@ -54,7 +54,7 @@ const StyledReviewPadding = styled.div`
   width: 300px;
   height: 390px;
   margin: 20px 10px 20px 10px;
-  display: inline-block;
+  display: inline-block; !important;
   flex-direction: row;
   border-style: solid;
   border-width: 2px;
