@@ -19,8 +19,11 @@
 
 To start the app:
   npm install
-  npm run seedDB
-  npm run start
+  
+  mongod
+  npm run build
+  npm run seed-dev
+  npm run start-dev
 
 ## Requirements
 
