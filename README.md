@@ -19,8 +19,9 @@
 
 To start the app:
   npm install
-  npm run seedDB
-  npm run start
+  npm run build
+  npm run seed-dev
+  npm run server-dev
 
 ## Requirements
 
