@@ -1,11 +1,13 @@
 const mongoose = require('mongoose');
 const { Review } = require('../Review_schema.js');
-const lorem = require('lorem-ipsum');
 const faker = require('faker');
 
-mongoose.connect('mongodb://172.17.0.1:27017/fec', { useNewUrlParser: true })
-  .catch(err => {
-    console.log(err)
+mongoose.connect('mongodb://127.0.0.1:27017/test', { useNewUrlParser: true })
+  .then(() => {
+  })
+  .catch(err => { // mongoose connection error will be handled here
+      console.error('App starting error:', err.stack);
+      process.exit(1);
   });
 
 const dummyShowcaseReviews = [
@@ -139,9 +141,6 @@ const generateAndStoreReviews = () => {
 
       Review.create(record, (err) => {
         if (err) { throw err; }
-        if (i === 199) {
-          process.exit();
-        }
       });
     }
   }
