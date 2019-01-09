@@ -3,7 +3,10 @@ const { Review } = require('../Review_schema.js');
 const lorem = require('lorem-ipsum');
 const faker = require('faker');
 
-mongoose.connect('mongodb://172.17.0.2/fec', { useNewUrlParser: true });
+mongoose.connect('mongodb://172.17.0.1:27017/fec', { useNewUrlParser: true })
+  .catch(err => {
+    console.log(err)
+  });
 
 const dummyShowcaseReviews = [
   {

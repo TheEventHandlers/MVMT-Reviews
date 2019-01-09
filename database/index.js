@@ -1,7 +1,10 @@
 const mongoose = require('mongoose');
 const { Review } = require('./Review_schema.js')
 
-mongoose.connect('mongodb://172.17.0.2/fec', { useNewUrlParser: true });
+mongoose.connect('mongodb://172.17.0.1:27017/fec', { useNewUrlParser: true })
+  .catch(err => {
+    console.log(err)
+  });
 
 var db = mongoose.connection;
 
@@ -12,7 +15,7 @@ const getReviewsForId = (id, cb) => {
   Review.find({ w_id: id }, (err, document) => {
     if (err) { throw err; }
     cb(document);
-  }).limit(10);
+  })
 };
 
 module.exports.getReviewsForId = getReviewsForId;

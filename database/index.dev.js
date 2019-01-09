@@ -18,7 +18,7 @@ const getReviewsForId = (id, cb) => {
   Review.find({ w_id: id }, (err, document) => {
     if (err) { throw err; }
     cb(document);
-  }).limit(10);
+  });
 };
 
 module.exports.getReviewsForId = getReviewsForId;
