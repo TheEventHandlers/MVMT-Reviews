@@ -1,10 +1,13 @@
 const mongoose = require('mongoose');
 const { Review } = require('./Review_schema.js')
 
-mongoose.connect('mongodb://172.17.0.1:27017/fec', { useNewUrlParser: true })
-  .catch(err => {
-    console.log(err)
-  });
+mongoose.connect('mongodb://127.0.0.1:27017/test', { useNewUrlParser: true })
+  .then(() => {
+  })
+  .catch(err => { // mongoose connection error will be handled here
+      console.error('App starting error:', err.stack);
+      process.exit(1);
+   });
 
 var db = mongoose.connection;
 
@@ -15,7 +18,7 @@ const getReviewsForId = (id, cb) => {
   Review.find({ w_id: id }, (err, document) => {
     if (err) { throw err; }
     cb(document);
-  })
+  });
 };
 
 module.exports.getReviewsForId = getReviewsForId;
