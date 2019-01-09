@@ -14,10 +14,7 @@
     "start-dev": "nodemon server/index.dev.js",
     "seedDB": "node database/data_generation/generateReviewData.js",
     "seed-dev": "node database/data_generation/generateReviewData.dev.js & exit",
-<<<<<<< HEAD
     "start-dev": "nodemon server/index.js",
-=======
->>>>>>> 819e5febc4cb85ecf26844e5d7713fdcd622678c
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage --colors"
