@@ -10,21 +10,21 @@ db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
 // CREATE
 const addReview = (id, cb) => {
-	var doc = {};
-	doc._id = id;
-	doc.w_id = null;
-	doc.reviewer = null;
-	doc.stars = null;
-	doc.date_posted = null;
-	doc.review_id = null;
-	doc.review_header = null;
-	doc.review_body = null;
-	doc.upvotes = null;
-	doc.downvotes = null;
-	Review.insertOne(doc, (err, document) => {
-		if (err) { throw err }
-		cb();
-	})
+  var doc = {};
+  doc._id = id;
+  doc.w_id = null;
+  doc.reviewer = null;
+  doc.stars = null;
+  doc.date_posted = null;
+  doc.review_id = null;
+  doc.review_header = null;
+  doc.review_body = null;
+  doc.upvotes = null;
+  doc.downvotes = null;
+  Review.insertOne(doc, (err, document) => {
+    if (err) { throw err }
+    cb();
+  })
 }
 
 // READ
@@ -37,21 +37,21 @@ const getReviewsForId = (watch_id, cb) => {
 
 // UPDATE
 const editReview = (review_id, update, cb) => {
-	Review.updateOne(
-		{ '_id': review_id }, // Filter
-		{ 'review_body': update }, // Update
-		(err, document) => {
-			if (err) { throw err; }
-			cb(document);
-	})
+  Review.updateOne(
+    { '_id': review_id }, // Filter
+    { 'review_body': update }, // Update
+    (err, document) => {
+      if (err) { throw err; }
+      cb(document);
+  })
 }
 
 // DELETE
 const deleteReview = (review_id, cb) => {
-	Review.deleteOne({_id: review_id}, (err, document) => {
-		if (err) { throw err; }
-		cb(document);
-	})
+  Review.deleteOne({_id: review_id}, (err, document) => {
+    if (err) { throw err; }
+    cb(document);
+  })
 }
  
 module.exports.addReview = addReview;
