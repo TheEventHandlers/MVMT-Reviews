@@ -12,54 +12,54 @@ app.use('/watches/:wid', express.static('client/dist'));
 
 // CREATE
 app.post('/api/watches/:wid/reviews', (req, res) =>) {
-	var newreview_id;
-	addReview(newreview_id, (err) => {
-		if (err) {
+  var newreview_id;
+  addReview(newreview_id, (err) => {
+    if (err) {
       res.status(404);
-  		res.send(err);
-  	} else {
-    	res.send(`Successfully added new review ${newreview_id}`);
-  	}
-	})
+      res.send(err);
+    } else {
+      res.send(`Successfully added new review ${newreview_id}`);
+    }
+  })
 }
 
 // READ
 app.get('/api/watches/:wid/reviews', (req, res) => {
   const watch_id = req.params.wid;
   getReviewsForId(watch_id, (reviewsForId) => {
-  	if (err) {
+    if (err) {
       res.status(404);
-  		res.send(err);
-  	} else {
-    	res.send(reviewsForId);
-  	}
+      res.send(err);
+    } else {
+      res.send(reviewsForId);
+    }
   });
 });
 
 // UPDATE
 app.patch('/api/watches/:wid/reviews/:_id', (req, res) => {
-	const review_id = req.params._id;
-	editReview(review_id, (err) => {
-		if (err) {
+  const review_id = req.params._id;
+  editReview(review_id, (err) => {
+    if (err) {
       res.status(404);
-  		res.send(err);
-		} else {
-			res.send(`Successfully updated review ${review_id}`);
-		}
-	})
+      res.send(err);
+    } else {
+      res.send(`Successfully updated review ${review_id}`);
+    }
+  })
 })
 
 // DELETE
 app.delete('/api/watches/:wid/reviews/:_id', (req, res) => {
-	const review_id = req.params._id;
-	deleteReview(review_id, (err) => {
-		if (err) {
+  const review_id = req.params._id;
+  deleteReview(review_id, (err) => {
+    if (err) {
       res.status(404);
-  		res.send(err);
+      res.send(err);
     } else {
       res.send(`Successfully deleted review ${review_id}`);
     }
-	})
+  })
 })
 
 app.listen(PORT, () => {
