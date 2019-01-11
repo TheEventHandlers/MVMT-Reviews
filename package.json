@@ -10,10 +10,15 @@
   "scripts": {
     "build": "NODE_ENV=production webpack -p",
     "build-dev": "NODE_ENV=production webpack -p --watch",
-    "start": "node database/data_generation/generateReviewData.js && node server/index.js",
+
+    "start": "node database/mongo/seed_mongo.js && node server/index.js",
     "start-dev": "nodemon server/index.dev.js",
-    "seedDB": "node database/data_generation/generateReviewData.js",
-    "seed-dev": "node database/data_generation/generateReviewData.dev.js & exit",
+
+    "seedmongo": "node database/mongo/seed_mongo.js",
+    "seedmongo-dev": "node database/mongo/seed_mongo.dev.js & exit",
+
+    "seedpg": "node database/postgres/postgres.js",
+
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage --colors"

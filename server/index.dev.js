@@ -1,7 +1,7 @@
 const express = require('express');
 const morgan = require('morgan');
 const compression = require('compression');
-const { getReviewsForId } = require('../database/index.dev.js');
+const { getReviewsForId } = require('../database/mongo/index.dev.js');
 
 const app = express();
 const PORT = 3004;

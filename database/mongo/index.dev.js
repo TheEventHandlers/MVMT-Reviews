@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const { Review } = require('./Review_schema.js')
+const { Review } = require('./schema_mongo.js')
 
 mongoose.connect('mongodb://127.0.0.1:27017/test', { useNewUrlParser: true })
   .then(() => {

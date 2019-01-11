@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const { Review } = require('./Review_schema.js')
+const { Review } = require('./schema_mongo.js')
 
 mongoose.connect('mongodb://localhost/fec', { useNewUrlParser: true });
 
