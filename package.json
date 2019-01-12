@@ -10,15 +10,11 @@
   "scripts": {
     "build": "NODE_ENV=production webpack -p",
     "build-dev": "NODE_ENV=production webpack -p --watch",
-
+    "generate": "node database/seed.js",
     "start": "node database/mongo/seed_mongo.js && node server/index.js",
     "start-dev": "nodemon server/index.dev.js",
-
     "seedmongo": "node database/mongo/seed_mongo.js",
     "seedmongo-dev": "node database/mongo/seed_mongo.dev.js & exit",
-
-    "seedpg": "node database/postgres/postgres.js",
-
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage --colors"
@@ -31,10 +27,12 @@
     "body-parser": "^1.18.3",
     "compression": "^1.7.3",
     "express": "^4.16.4",
+    "json2csv": "^4.3.3",
     "moment": "^2.23.0",
     "mongoose": "^5.4.0",
     "parse-url": "^5.0.0",
     "path": "^0.12.7",
+    "pg": "^7.8.0",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
     "react-horizontal-scrolling-menu": "^0.4.3",
