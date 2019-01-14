@@ -1,4 +1,5 @@
 const { Pool, Client } = require('pg');
+const config = require('../config');
 // const { Review } = require('./schema_postgres.js')
 
 // mongoose.connect('mongodb://127.0.0.1:27017/test', { useNewUrlParser: true })
@@ -9,26 +10,16 @@ const { Pool, Client } = require('pg');
 //       process.exit(1);
 //    });
 
-const pool = new Pool({
-  user: 'root',
-  host: 'localhost',
-  database: 'reviews',
-  password: 'admin',
-  port: 5432,
-})
+
+const pool = new Pool(config.config);
 
 pool.query('SELECT NOW()', (err, res) => {
   console.log(err, res)
   pool.end()
 })
 
-const client = new Client({
-  user: 'root',
-  host: 'localhost',
-  database: 'reviews',
-  password: 'admin',
-  port: 5432,
-})
+const client = new Client(config.config);
+
 client.connect()
 
 client.query('SELECT NOW()', (err, res) => {

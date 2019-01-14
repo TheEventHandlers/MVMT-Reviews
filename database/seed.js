@@ -55,7 +55,7 @@ const showProgressUpdate = function(remaining, total) {
 		progressBar += '-';
 	}
 	progressBar += "] ";
-	progressBar += Math.floor(currentPct) + "%"
+	progressBar += currentPct.toFixed(2) + "%"
 	// Overwrite previous progress bar
 	process.stdout.write("\r");
 	process.stdout.write(progressBar);
@@ -87,7 +87,6 @@ const writeData = function(entriesTodo) {
     });
 	}
 }
-
 
 const reviewsToGenerate = 10000000; // 10000000 = 10 million
 
