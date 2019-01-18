@@ -6,7 +6,6 @@ const reviewSchema = new mongoose.Schema({
   reviewer: String, 
   stars: Number,
   date_posted: Date,
-  review_id: Number,
   review_header: String,  
   review_body: String,
   upvotes: Number,

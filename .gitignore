@@ -1,5 +1,7 @@
 # Monstrous Datafiles
+database/data_old
 database/data.csv
+database/data_sm.csv
 
 # Logs
 logs
@@ -65,3 +67,4 @@ typings/
 
 # mac stuff
 .DS_Store
+database/.DS_Store

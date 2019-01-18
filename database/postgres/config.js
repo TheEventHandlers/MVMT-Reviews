@@ -1,9 +1,9 @@
 var config = {
-  user: 'root',
+  user: 'postgres',
   host: 'localhost',
   database: 'reviews',
-  password: 'admin',
-  port: 5432,
+  password: 'postgres'
 }
 
-module.exports.config = config;
+// port: 5432
+module.exports = config;
