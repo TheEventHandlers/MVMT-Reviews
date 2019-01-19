@@ -16,14 +16,19 @@
 
 ## Usage
 
-To start the app:
+Start with Postgres:
 ```sh
-  npm install
-  
+  npm run build
+  npm run seed-pg
+  npm run start-pg
+ ```
+ 
+Start with MongoDB (Deprecated):
+  ```sh
   mongod
   npm run build
-  npm run seed-dev
-  npm run start-dev
+  npm run seed-mongo
+  npm run start-mongo
  ```
 
 ## Requirements

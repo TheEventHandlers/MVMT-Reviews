@@ -1,44 +1,65 @@
 const { Pool, Client } = require('pg');
 const config = require('./config.js');
-const path = require('path');
-
-const dataCSV = path.join(__dirname, '../data.csv');
 
 const pool = new Pool(config);
-
-// pool.query('SELECT NOW()', (err, res) => {
-//   console.log(err, res)
-//   pool.end()
-// })
 
 pool.on('error', (err) => {
   console.log('Error', err);
 })
 
-// const client = new Client(config);
+pool.connect((err, client, release) => {
+  if (err) {
+    console.error('Error acquiring client', err.stack)
+  } else {
+    console.log('connected to postgres');
+  }
+})
 
-// // client.connect()
 
-// client.query('SELECT NOW()', (err, res) => {
-//   console.log(err, res)
-//   client.end()
-// })
+// ----- Database Functions ----- //
 
+// CREATE
 
-const saveData = () => {
-  const beforeQuery = Date.now();
-  pool.query(`COPY (id, reviewer, stars, date_posted, review_id, review_header, review_body, upvotes, downvotes) FROM \'${dataCSV}\' DELIMITERS ',' CSV HEADER;`, (err) => {
+// READ
+const getReviewsById = (w_id, callback) => {
+  const queryString = `select * from reviews where w_id = ${w_id}`;
+  pool.query(queryString, (err, results) => {
     if (err) {
-      console.log('error', err);
+      callback(err);
     } else {
-      const afterQuery = Date.now();
-      const queryTime = (afterQuery - beforeQuery)/6000;
-      console.log('success!');
-      console.log(`CSV file loaded into Postgres in ${queryTime} minutes`);
+      const data = {
+        _id: results.rows[0]._id,
+        w_id: results.rows[0].w_id,
+        reviewer: results.rows[0].reviewer,
+        stars: results.rows[0].stars,
+        date_posted: results.rows[0].date_posted,
+        review_header: results.rows[0].review_header,
+        review_body: results.rows[0].review_body,
+        upvotes: results.rows[0].upvotes
+        downvotes: results.rows[0].downvotes
+      };
+      callback(null, data);
     }
-  })
+  });
+};
+
+// UPDATE
+
+// DELETE
+const deleteReview = (w_id, callback) => {
+  const queryString = `delete from photos where id = ${w_id}`;
+  pool.query(queryString, (err) => {
+    if (err) {
+      callback(err);
+    } else {
+      callback(null);
+    }
+  });
+};
+
+module.exports = {
+  // addReview,
+  getReviewsById,
+  // editReview,
+  deleteReview
 }
-
-saveData();
-
-pool.end()
