@@ -16,6 +16,11 @@
 
 ## Usage
 
+Generate fake data:
+```sh
+npm run generate
+```
+
 Start with Postgres:
 ```sh
   npm run build

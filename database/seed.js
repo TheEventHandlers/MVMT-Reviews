@@ -25,7 +25,7 @@ const generateCSVReview = () => {
 	});
 	record.date_posted = faker.date.past();
 	record.review_header = faker.lorem.words();
-	record.review_body = faker.lorem.paragraphs();
+	record.review_body = faker.lorem.paragraph();
 	record.upvotes = faker.random.number(100);
 	record.downvotes = faker.random.number(100);
 	nextReviewId++;

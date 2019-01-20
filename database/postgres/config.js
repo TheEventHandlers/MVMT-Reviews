@@ -1,6 +1,6 @@
 var config = {
-  user: 'postgres',
   host: 'localhost',
+  user: 'paloma',
   database: 'reviews',
   password: 'postgres'
 }
