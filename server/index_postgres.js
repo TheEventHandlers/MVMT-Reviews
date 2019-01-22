@@ -8,7 +8,9 @@ const PORT = 3004;
 
 app.use(morgan('tiny'));
 app.use(compression());
-app.use('/watches/:wid', express.static('client/dist'));
+
+
+app.use('/watches/:wid', express.static('client/dist/'));
 
 app.get('/api/watches/:wid/reviews', (req, res) => {
   const id = req.params.wid;

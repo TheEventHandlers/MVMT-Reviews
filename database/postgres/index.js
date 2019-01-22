@@ -25,20 +25,12 @@ const getReviewsById = (w_id, callback) => {
   const queryString = `select * from reviews where w_id = ${w_id}`;
   pool.query(queryString, (err, results) => {
     if (err) {
-      callback(err);
+      callback(error);
     } else {
-      const data = {
-        _id: results.rows[0]._id,
-        w_id: results.rows[0].w_id,
-        reviewer: results.rows[0].reviewer,
-        stars: results.rows[0].stars,
-        date_posted: results.rows[0].date_posted,
-        review_header: results.rows[0].review_header,
-        review_body: results.rows[0].review_body,
-        upvotes: results.rows[0].upvotes
-        downvotes: results.rows[0].downvotes
-      };
-      callback(null, data);
+      const data = results.rows;
+      console.log(data);
+      console.log("got reviews by id")
+      callback(data);
     }
   });
 };

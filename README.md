@@ -21,19 +21,11 @@ Generate fake data:
 npm run generate
 ```
 
-Start with Postgres:
+Start app:
 ```sh
   npm run build
   npm run seed-pg
   npm run start-pg
- ```
- 
-Start with MongoDB (Deprecated):
-  ```sh
-  mongod
-  npm run build
-  npm run seed-mongo
-  npm run start-mongo
  ```
 
 ## Requirements

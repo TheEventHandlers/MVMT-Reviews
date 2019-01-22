@@ -11,9 +11,7 @@ import ReviewBox from './ReviewBox.jsx';
 
 const MenuItem = ( {review, key, toggle, hidden} ) => {
   return (
-    <div
-      className="menu-item"
-    >
+    <div className="menu-item">
       <ReviewBox toggleClick={toggle} isToggled={hidden} key={key} review={review}/>
     </div>
   );
@@ -34,9 +32,9 @@ export const Menu = (list, position, handler, hidden) => list.map((el) => {
 
 const Arrow = ({ text, className }) => {
   return (
-    <div
-      className={className}
-    >{text}</div>
+    <div className={className}>
+      {text}
+    </div>
   );
 };
 
@@ -90,10 +88,6 @@ class App extends React.Component {
 
     axios.get(`/api/watches/${wid}/reviews`)
       .then((reviews) => {
-
-        if (reviews.data.length < 8) {
-          return null;
-        }
         let newState = { reviews: reviews.data };
         this.setState((state) => {
           return newState;
@@ -106,12 +100,12 @@ class App extends React.Component {
       this.setState({
         isToggled: !this.state.isToggled,
       });
-  }
+    }
 
 
   render() {
     if (this.state.reviews === null) {
-      return null;
+      return (<div>There are no reviews!</div>);
     }
 
     const { selected } = this.state;
@@ -132,8 +126,7 @@ class App extends React.Component {
           hideArrows={true}
         />
       </div>
-
-    	)
+    )
   };
 }
 

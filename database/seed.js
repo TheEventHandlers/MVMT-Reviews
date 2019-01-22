@@ -10,14 +10,15 @@ const randomIntFromInterval = (min, max) =>// min and max included
   return Math.floor(Math.random()*(max-min+1)+min);
 }
 
-const firstWatchId = 101;
-const lastWatchId = 199;
-let nextReviewId = 1001; // auto-increment
+// const firstWatchId = 101;
+// const lastWatchId = 199;
+let reviewId = 0;
+let watchId = 100; // auto-increment
 
 const generateCSVReview = () => {
 	const record = {};
-	record._id = nextReviewId;
-	record.w_id = randomIntFromInterval(firstWatchId, lastWatchId);
+	record._id = reviewId;
+	record.w_id = watchId;
 	record.reviewer = faker.name.findName();
 	record.stars = faker.random.number({
 	  'min': 1,
@@ -26,9 +27,13 @@ const generateCSVReview = () => {
 	record.date_posted = faker.date.past();
 	record.review_header = faker.lorem.words();
 	record.review_body = faker.lorem.paragraph();
-	record.upvotes = faker.random.number(100);
-	record.downvotes = faker.random.number(100);
-	nextReviewId++;
+	record.upvotes = faker.random.number(50);
+	record.downvotes = faker.random.number(50);
+	reviewId++;
+
+	if (reviewId % 5 === 0) {
+		watchId++;
+	}
 
   return json2csv(record, {header: false});
 };
@@ -88,7 +93,9 @@ const writeData = function(entriesTodo) {
 	}
 }
 
-const reviewsToGenerate = 10000000; // 10000000 = 10 million
+const reviewsToGenerate = 50000000;
+// 10000000 = 10 million (if random reviews per watch)
+// 50000000 = 50 million (if 5 reviews per watch @ 10 million watches)
 
 const start = Date.now();
 writeData(reviewsToGenerate);
