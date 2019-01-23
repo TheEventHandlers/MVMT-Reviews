@@ -19,6 +19,17 @@ pool.connect((err, client, release) => {
 // ----- Database Functions ----- //
 
 // CREATE
+const addReview = (w_id, callback) => {
+  const queryString = `insert into reviews(w_id, reviewer, stars, date_posted, review_header, review_body, upvotes, downvotes)`;
+  pool.query(queryString, (err, results) => {
+    if (err) {
+      callback(error);
+    } else {
+      callback(results);
+    }
+  })
+}
+
 
 // READ
 const getReviewsById = (w_id, callback) => {
@@ -28,8 +39,6 @@ const getReviewsById = (w_id, callback) => {
       callback(error);
     } else {
       const data = results.rows;
-      console.log(data);
-      console.log("got reviews by id")
       callback(data);
     }
   });
@@ -50,7 +59,7 @@ const deleteReview = (w_id, callback) => {
 };
 
 module.exports = {
-  // addReview,
+  addReview,
   getReviewsById,
   // editReview,
   deleteReview

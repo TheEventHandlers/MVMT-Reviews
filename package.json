@@ -16,6 +16,7 @@
     "start": "node database/mongo/seed_mongo.js && node server/index.js",
     "start-mongo": "nodemon server/index.dev.js",
     "start-pg": "nodemon server/index_postgres.js",
+    "stress-test": " k6 run --vus 150 --duration 5m --rps 1000 stresstest_postgres.js",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage --colors"
@@ -64,6 +65,7 @@
     "jest": "^23.6.0",
     "lorem-ipsum": "^1.0.6",
     "morgan": "^1.9.1",
+    "newrelic": "^5.1.0",
     "nodemon": "^1.18.9",
     "terser-webpack-plugin": "^1.2.1",
     "webpack": "^4.28.0",

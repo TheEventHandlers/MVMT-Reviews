@@ -68,3 +68,5 @@ typings/
 # mac stuff
 .DS_Store
 database/.DS_Store
+
+newrelic.js
