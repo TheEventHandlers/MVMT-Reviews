@@ -16,6 +16,7 @@ let reviewId = 0;
 let watchId = 100; // auto-increment
 
 const generateCSVReview = () => {
+	const twoSentences = `${faker.lorem.sentence()} ${faker.lorem.sentence()}`;
 	const record = {};
 	record._id = reviewId;
 	record.w_id = watchId;
@@ -26,7 +27,7 @@ const generateCSVReview = () => {
 	});
 	record.date_posted = faker.date.past();
 	record.review_header = faker.lorem.words();
-	record.review_body = faker.lorem.paragraph();
+	record.review_body = twoSentences;
 	record.upvotes = faker.random.number(50);
 	record.downvotes = faker.random.number(50);
 	reviewId++;

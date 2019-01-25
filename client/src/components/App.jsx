@@ -83,8 +83,8 @@ class App extends React.Component {
   componentDidMount() {
     const parsedUrl = parseUrl(window.location.href);
     const pathname = parsedUrl.pathname;
-    const wid = pathname.substring(pathname.length - 3);
-    if (wid < 100 || wid > 199) { return; }
+    const wid = Number(pathname.split('/')[2]);
+    // if (wid < 100 || wid > 199) { return; }
 
     axios.get(`/api/watches/${wid}/reviews`)
       .then((reviews) => {

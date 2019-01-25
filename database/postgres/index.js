@@ -1,7 +1,12 @@
 const { Pool, Client } = require('pg');
 const config = require('./config.js');
 
-const pool = new Pool(config);
+const pool = new Pool({
+  host: '',
+  user: '',
+  database: 'reviews',
+  password: ''
+});
 
 pool.on('error', (err) => {
   console.log('Error', err);

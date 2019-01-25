@@ -2,6 +2,8 @@
 database/data_old
 database/data.csv
 database/data_sm.csv
+data1.csv
+data2.csv
 
 # Logs
 logs
@@ -70,3 +72,4 @@ typings/
 database/.DS_Store
 
 newrelic.js
+seed_ec2.js
