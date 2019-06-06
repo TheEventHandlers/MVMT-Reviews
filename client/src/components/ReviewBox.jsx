@@ -110,7 +110,6 @@ const StyledDate = styled.div`
   color: #D3D3D3;
   display: flex;   
   position: relative;
-  display: inline;
   float: right;
   vertical-align: middle;
   margin: auto;
