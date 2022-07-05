@@ -29,7 +29,7 @@
     "express": "^4.16.4",
     "moment": "^2.23.0",
     "mongoose": "^5.4.0",
-    "parse-url": "^5.0.0",
+    "parse-url": "^6.0.1",
     "path": "^0.12.7",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
